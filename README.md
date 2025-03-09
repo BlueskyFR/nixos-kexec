@@ -19,8 +19,9 @@ Then run it and let it download & setup its base image.
 
 > FYI your phone's architecture is generally aarch64 (arm64).
 
-Also go to the LT settings and increase the allocated storage size to
-the maximum as the NixOS ramdisk build is going to take a lot of space (it seems that changing the disk size crashes the VM and forces you to wipe everything/reset it afterwards, so do it now!).
+Also go to the LT settings and increase the allocated storage size of
+the VM; 12GB should be enough.
+> The NixOS ramdisk build is going to take a lot of space (it seems that changing the disk size crashes the VM and forces you to wipe everything/reset it afterwards, so do it now!).
 
 ## Enabling SSH access
 
@@ -88,5 +89,13 @@ git clone git@github.com:BlueskyFR/nixos-kexec && cd nixos-kexec
 The goal is to boot (using kexec) the VM on a ramdisk containing NixOS.
 ```bash
 nix-build '<nixpkgs/nixos>' -A config.system.build.kexec_tarball -I nixos-config=./main.nix
+# Then free up some disk
+nix-collect-garbage -d
+mkdir system
+tar xf result/tarball/nixos-system-aarch64-linux.tar.xz -C system
+```
 
+4. Run the kexec!
+```bash
+sudo ./system/kexec_nixos
 ```
