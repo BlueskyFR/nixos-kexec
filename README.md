@@ -10,12 +10,17 @@ Basically, kexec is a Linux Kernel feature that allows you to execute and
 switch to another kernel from the running one, so you can do cool things such
 as replacing the running distribution with another one like NixOS ;)
 
+Much of the code of this repo is copied & upgraded from cleverca22's awesome nix-tests repo here: [https://github.com/cleverca22/nix-tests](https://github.com/cleverca22/nix-tests/tree/master/kexec).
+
+## Prerequisites
+
 First, enable the Linux Terminal from the Android developer settings!
 Then run it and let it download & setup its base image.
 
 > FYI your phone's architecture is generally aarch64 (arm64).
 
-Much of the code of this repo is copied & upgraded from cleverca22's awesome nix-tests repo here: [https://github.com/cleverca22/nix-tests](https://github.com/cleverca22/nix-tests/tree/master/kexec).
+Also go to the LT settings and increase the allocated storage size to
+the maximum as the NixOS ramdisk build is going to take a lot of space (it seems that changing the disk size crashes the VM and forces you to wipe everything/reset it afterwards, so do it now!).
 
 ## Enabling SSH access
 
