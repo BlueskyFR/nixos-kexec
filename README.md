@@ -1,5 +1,9 @@
 # Installing NixOS on the Android Linux Terminal
 
+The Linux Terminal is a feature leveraging the [Android Virtualization Framework](https://source.android.com/docs/core/virtualization), in order to provide a Debian-based terminal app.
+
+It is anticipated that users will be able to run graphical applications as well through Wayland starting from Android 16.
+
 Inspired, upgraded & adapted from [this tutorial](https://blog.korfuri.fr/posts/2022/08/nixos-on-an-oracle-free-tier-ampere-machine/).
 
 Basically, kexec is a Linux Kernel feature that allows you to execute and
